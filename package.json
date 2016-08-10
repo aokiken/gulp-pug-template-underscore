@@ -1,6 +1,6 @@
 {
   "name": "gulp-pug-template-underscore",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "gulp-pug-template-underscore === ## Overview",
   "main": "index.js",
   "scripts": {},
@@ -19,5 +19,16 @@
   "bugs": {
     "url": "https://github.com/aokiken/gulp-pug-template-underscore/issues"
   },
-  "homepage": "https://github.com/aokiken/gulp-pug-template-underscore#readme"
+  "homepage": "https://github.com/aokiken/gulp-pug-template-underscore#readme",
+  "devDependencies": {},
+  "keywords": [
+    "gulp",
+    "pug",
+    "jade",
+    "underscore",
+    "backbone",
+    "template",
+    "tool",
+    "front end"
+  ]
 }
