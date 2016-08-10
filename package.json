@@ -1,7 +1,7 @@
 {
   "name": "gulp-pug-template-underscore",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.3",
+  "description": "gulp-pug-template-underscore === ## Overview",
   "main": "index.js",
   "scripts": {},
   "author": "",
@@ -11,5 +11,14 @@
     "pug": "^2.0.0-beta4",
     "gulp-util": "^3.0.7",
     "recursive-readdir": "^2.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aokiken/gulp-pug-template-underscore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aokiken/gulp-pug-template-underscore/issues"
+  },
+  "homepage": "https://github.com/aokiken/gulp-pug-template-underscore#readme"
 }
