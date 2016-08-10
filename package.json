@@ -9,10 +9,9 @@
   "dependencies": {
     "fs": "0.0.2",
     "pug": "^2.0.0-beta4",
-    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1",
     "recursive-readdir": "^2.0.0"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aokiken/gulp-pug-template-underscore.git"
