@@ -16,12 +16,14 @@ module.exports = function (opts) {
       var data = values[1];
       var result = data;
       var matchList = getMatchList(data);
-      matchList.forEach(function (matchItem) {
-        var key = matchItem.replace(/_\.template\('|'\)/g, '');
-        var val = "_.template('" + list[key] + "')";
-        var reg = "_\.template\\('" + key + "'\\)";
-        result = result.replace(new RegExp(reg, 'g'), val);
-      });
+      if(matchList){
+        matchList.forEach(function (matchItem) {
+          var key = matchItem.replace(/_\.template\('|'\)/g, '');
+          var val = "_.template('" + list[key] + "')";
+          var reg = "_\.template\\('" + key + "'\\)";
+          result = result.replace(new RegExp(reg, 'g'), val);
+        });
+      }
       file.contents = new Buffer(result);
       callback(null, file);
     });
