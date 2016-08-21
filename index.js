@@ -7,21 +7,23 @@ var cache = {};
 
 module.exports = function (opts) {
   var defaults = {
-    templateDirPath: 'src/pug/templates'
+    templateDirPath: 'src/pug/templates',
+    prefix: ''
   };
-  var config = extend(opts, defaults);
+  var config = extend(defaults, opts);
   return through.obj(function (file, encoding, callback) {
     Promise.all([getTemplateList(config.templateDirPath), String(file.contents)]).then(function (values) {
       var list = values[0];
       var data = values[1];
       var result = data;
-      var matchList = getMatchList(data);
-      if(matchList){
+      var matchList = getMatchList(data,config.prefix);
+      if (matchList) {
         matchList.forEach(function (matchItem) {
-          var key = matchItem.replace(/_\.template\('|'\)/g, '');
+          var matchItemReg = new RegExp("_.template\\('" + config.prefix + "|'\\)", "g");
+          var key = matchItem.replace(matchItemReg, '');
           var val = "_.template('" + list[key] + "')";
-          var reg = "_\.template\\('" + key + "'\\)";
-          result = result.replace(new RegExp(reg, 'g'), val);
+          var resultReg = new RegExp("_.template\\('" + config.prefix + key + ".*?'\\)", "g");
+          result = result.replace(resultReg, val);
         });
       }
       file.contents = new Buffer(result);
@@ -59,6 +61,7 @@ function getTemplateList(templateDirPath) {
   });
 }
 
-function getMatchList(data) {
-  return data.match(/_.template\('.*?'\)/g);
+function getMatchList(data, prefix) {
+  var matchListReg = new RegExp("_.template\\('" + prefix + ".*?'\\)", "g");
+  return data.match(matchListReg);
 }
