@@ -5,6 +5,10 @@ var pug = require('pug');
 var through = require('through2');
 var cache = {};
 
+process.on('uncaughtException', function (err) {
+  console.log(err);
+});
+
 module.exports = function (opts) {
   var defaults = {
     templateDirPath: 'src/pug/templates',
@@ -16,7 +20,7 @@ module.exports = function (opts) {
       var list = values[0];
       var data = values[1];
       var result = data;
-      var matchList = getMatchList(data,config.prefix);
+      var matchList = getMatchList(data, config.prefix);
       if (matchList) {
         matchList.forEach(function (matchItem) {
           var matchItemReg = new RegExp("_.template\\('" + config.prefix + "|'\\)", "g");
