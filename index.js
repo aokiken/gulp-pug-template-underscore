@@ -47,21 +47,17 @@ function extend(a, b) {
 
 function getTemplateList(templateDirPath) {
   return new Promise(function (resolve, reject) {
-    if (!cache['getTemplateList']) {
-      recursive(templateDirPath, function (err, files) {
-        var list = {};
-        files.forEach(function (filePath) {
-          var filePathSplit = filePath.split('/');
-          var name = filePathSplit[filePathSplit.length - 1].replace('.pug', '');
-          var html = pug.compileFile(filePath, null);
-          list[name] = html();
-        });
-        cache['getTemplateList'] = list;
-        resolve(cache['getTemplateList']);
+    recursive(templateDirPath, function (err, files) {
+      var list = {};
+      files.forEach(function (filePath) {
+        var filePathSplit = filePath.split('/');
+        var name = filePathSplit[filePathSplit.length - 1].replace('.pug', '');
+        var html = pug.compileFile(filePath, null);
+        list[name] = html();
       });
-    } else {
-      resolve(cache['getTemplateList']);
-    }
+      resolve(list);
+    });
+
   });
 }
 
