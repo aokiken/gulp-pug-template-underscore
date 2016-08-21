@@ -50,14 +50,15 @@ function getTemplateList(templateDirPath) {
     recursive(templateDirPath, function (err, files) {
       var list = {};
       files.forEach(function (filePath) {
-        var filePathSplit = filePath.split('/');
-        var name = filePathSplit[filePathSplit.length - 1].replace('.pug', '');
+        var filePathReplaced = filePath.replace(templateDirPath, '');
+        filePathReplaced = filePathReplaced.replace(/^\//, '');
+        filePathReplaced = filePathReplaced.replace(/\//g, '.');
+        var name = filePathReplaced.replace('.pug', '');
         var html = pug.compileFile(filePath, null);
         list[name] = html();
       });
       resolve(list);
     });
-
   });
 }
 
