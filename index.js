@@ -55,6 +55,7 @@ function getTemplateList(templateDirPath) {
         var name = filePathReplaced.replace('.pug', '');
         var html = pug.compileFile(filePath, null);
         list[name] = html();
+        list[name] = list[name].replace(/\n/g, '');
       });
       resolve(list);
     });
