@@ -7,7 +7,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "fs": "0.0.2",
     "pug": "^2.0.0-beta4",
     "through2": "^2.0.1",
     "recursive-readdir": "^2.0.0"
