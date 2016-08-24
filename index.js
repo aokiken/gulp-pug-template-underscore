@@ -1,6 +1,5 @@
 'use strict';
 var recursive = require('recursive-readdir');
-var fs = require('fs');
 var pug = require('pug');
 var through = require('through2');
 var cache = {};
