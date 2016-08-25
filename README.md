@@ -59,3 +59,7 @@ _.template('ptu-foo') // replace with compiled foo.pug
 [aokiken/todomvc_backbone](https://github.com/aokiken/todomvc_backbone)
 
 [Backbone.js • TodoMVC](https://aokiken.github.io/todomvc_backbone/)
+
+[aokiken/bookmarker_backbone](https://github.com/aokiken/bookmarker_backbone)
+
+[bookmarker_backbone](https://aokiken.github.io/bookmarker_backbone/)
