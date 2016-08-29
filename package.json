@@ -3,7 +3,10 @@
   "version": "0.0.16",
   "description": "no need script#foo(type=text/template)",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "gulp lint test remap-istanbul",
+    "prepublish": "gulp build"
+  },
   "author": "",
   "license": "MIT",
   "dependencies": {
