@@ -2,4 +2,5 @@ npm-debug.log
 /test
 /lib
 /maps
-coverage
+/coverage
+/node_modules
