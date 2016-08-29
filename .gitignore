@@ -1,1 +1,5 @@
 npm-debug.log
+/test
+/lib
+/maps
+coverage

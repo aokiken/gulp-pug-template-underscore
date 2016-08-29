@@ -1,0 +1,1 @@
+_.template('<div id="nest-foo"><%= bar %></div>');
