@@ -1,5 +1,8 @@
 gulp-pug-template-underscore
 ===
+
+[![Build Status](https://travis-ci.org/aokiken/gulp-pug-template-underscore.svg?branch=master)](https://travis-ci.org/aokiken/gulp-pug-template-underscore)
+
 ## Overview
 
 指定のディレクトリ配下にあるpugファイルをcompileして、指定のjsファイル内の `/_.template\('.*?'\)/g` に該当する要素の場合、replaceする。
