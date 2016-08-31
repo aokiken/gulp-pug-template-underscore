@@ -6,14 +6,15 @@ export default (config) =>
   through.obj((file, encoding, callback) => {
     Promise.all([templateList(config.templateDirPath)]).then((values) => {
       const list = values[0];
-      const _matchList = matchList(String(file.contents), config.prefix);
+      const _matchList = matchList(String(file.contents), config.prefix, config.extension);
       let result = String(file.contents);
       if (_matchList) {
         _matchList.forEach((matchItem) => {
-          const matchItemReg = new RegExp(`_.template\\('${config.prefix}|'\\)`, 'g');
+          const ext = config.extension ? '.pug' : '';
+          const matchItemReg = new RegExp(`_.template\\('${config.prefix}|${ext}'\\)`, 'g');
           const key = matchItem.replace(matchItemReg, '');
           const val = `_.template('${list[key]}')`;
-          const resultReg = new RegExp(`_.template\\('${config.prefix}${key}.*?'\\)`, 'g');
+          const resultReg = new RegExp(`_.template\\('${config.prefix}${key}.*?${ext}'\\)`, 'g');
           result = result.replace(resultReg, val);
         });
       }

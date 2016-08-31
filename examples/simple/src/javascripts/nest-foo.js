@@ -1,1 +1,1 @@
-_.template('ptu-nest.bar');
+_.template('nest.foo');
