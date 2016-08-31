@@ -1,6 +1,6 @@
 {
   "name": "gulp-pug-template-underscore",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "no need script#foo(type=text/template)",
   "main": "index.js",
   "scripts": {
@@ -10,16 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-eslint": "^3.0.1",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-mocha": "^3.0.1",
-    "gulp-sourcemaps": "^1.6.0",
     "pug": "^2.0.0-beta4",
     "recursive-readdir": "^2.0.0",
-    "remap-istanbul": "^0.6.4",
     "through2": "^2.0.1"
   },
   "repository": {
@@ -54,7 +46,6 @@
   "keywords": [
     "gulp",
     "pug",
-    "jade",
     "underscore",
     "backbone",
     "template",

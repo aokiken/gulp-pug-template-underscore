@@ -5,3 +5,4 @@ maps/
 node_modules/
 src/
 test/
+npm-shrinkwrap.json
