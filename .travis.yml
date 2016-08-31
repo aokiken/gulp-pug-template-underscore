@@ -10,3 +10,10 @@ script:
 - npm test && codecov
 notifications:
   email: false
+deploy:
+  provider: npm
+  email: aokiken@me.com
+  on:
+    tags: true
+  api_key:
+    secure: 2F3haAWU2UJLOeFHiZsypoDmSgF3Fa/ktxrNnB1ps2RlGvvQ5drocO1OmODVSH/cfE7XQPoM5qNP14XicvJe0XlSO/gjhNtsLuJ0ZufCxqSRE9P0s/b0j19BDCbNvR9p3o6YBTJRr2JbKaCZRDfzJLXbfR7hMLFnxBV22/IVyh+v0u/HezW0b8BdkUFJFxc9kKDP/qY3XwVM7tF4rY1GTuB5T47Ss2dUbENA4pN4IVlvuhoPh7KjoB1TRb9Wz8WFZLAoc2v+ZVhkX5LzfiKtMf8dyueDd+QunIo71Hex0ncOE1ch2Zf+Td/CxRX/j+XN5o43dOufF65RA0kmsXLbTCZDcPVNpafnrKQuxPEBn7VBruMVggkwqfdA3TyMG+RZXxiK8tXK9Gj8UlGUUF2xa7DXNzOoKxFRD6fDjXK38C1yoUTBVRJ++KwxK4NgLT0culAVOu52Bu5cMtL3bpJEzPsn03GRbLr5tPI4vneW1KMDXhcAHABcheShgtvYhBf/Q827NTaNwpSOehYHNYZkJH8RWH7smt3mEMIGxmm1Wl4zPZb0GuMVK2OUhwiD/wyrxViEcMVuK7roenr2SZpxKY3fekwj2+i/bTFgs1eELGbQOZOrVMlwXKLuHC4J/BRxtSV3MtI1hyLIulrY87YkAh9zK8DGQ3dVBx6whtJF5qM=
