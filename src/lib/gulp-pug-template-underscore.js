@@ -7,6 +7,7 @@ module.exports = (opts) => {
   const defaults = {
     templateDirPath: 'src/pug/templates',
     prefix: '',
+    pathSplit: '.',
     extension: false,
   };
   const config = Object.assign(defaults, opts);

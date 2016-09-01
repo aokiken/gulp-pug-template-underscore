@@ -9,6 +9,7 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
+        pathSplit: '.',
         extension: false,
       }))
       .pipe(gulp.dest(destPath))
@@ -26,6 +27,7 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
+        pathSplit: '.',
         extension: false,
       }))
       .pipe(gulp.dest(destPath))
@@ -43,6 +45,7 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
+        pathSplit: '.',
         extension: false,
       }))
       .pipe(gulp.dest(destPath))
@@ -60,6 +63,7 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
+        pathSplit: '.',
         extension: true,
       }))
       .pipe(gulp.dest(destPath))
@@ -77,6 +81,7 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
+        pathSplit: '.',
         extension: false,
       }))
       .pipe(gulp.dest(destPath))
@@ -94,6 +99,7 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
+        pathSplit: '.',
         extension: true,
       }))
       .pipe(gulp.dest(destPath))
@@ -111,6 +117,7 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
+        pathSplit: '.',
         extension: true,
       }))
       .pipe(gulp.dest(destPath))
@@ -128,11 +135,84 @@ describe('replaceTemplate', () => {
       .pipe(replaceTemplate({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
+        pathSplit: '.',
         extension: true,
       }))
       .pipe(gulp.dest(destPath))
       .on('end', () => {
         fs.readFile(`${destPath}/nest-extension-foo.js`, (err, data) => {
+          if (err) throw err;
+          assert.equal(data.toString(), "_.template('<div id=\"foo\"><%= bar %></div>');");
+          done();
+        });
+      });
+  });
+
+  it('test pathSplit-foo.js', (done) => {
+    gulp.src(`${srcPath}/pathSplit-foo.js`)
+      .pipe(replaceTemplate({
+        templateDirPath: 'examples/simple/src/pug/templates',
+        prefix: '',
+        pathSplit: '/',
+        extension: false,
+      }))
+      .pipe(gulp.dest(destPath))
+      .on('end', () => {
+        fs.readFile(`${destPath}/pathSplit-foo.js`, (err, data) => {
+          if (err) throw err;
+          assert.equal(data.toString(), "_.template('<div id=\"foo\"><%= bar %></div>');");
+          done();
+        });
+      });
+  });
+
+  it('test pathSplit-extension-foo.js', (done) => {
+    gulp.src(`${srcPath}/pathSplit-extension-foo.js`)
+      .pipe(replaceTemplate({
+        templateDirPath: 'examples/simple/src/pug/templates',
+        prefix: '',
+        pathSplit: '/',
+        extension: true,
+      }))
+      .pipe(gulp.dest(destPath))
+      .on('end', () => {
+        fs.readFile(`${destPath}/pathSplit-extension-foo.js`, (err, data) => {
+          if (err) throw err;
+          assert.equal(data.toString(), "_.template('<div id=\"foo\"><%= bar %></div>');");
+          done();
+        });
+      });
+  });
+
+  it('test prefix-pathSplit-foo.js', (done) => {
+    gulp.src(`${srcPath}/prefix-pathSplit-foo.js`)
+      .pipe(replaceTemplate({
+        templateDirPath: 'examples/simple/src/pug/templates',
+        prefix: 'ptu-',
+        pathSplit: '/',
+        extension: false,
+      }))
+      .pipe(gulp.dest(destPath))
+      .on('end', () => {
+        fs.readFile(`${destPath}/prefix-pathSplit-foo.js`, (err, data) => {
+          if (err) throw err;
+          assert.equal(data.toString(), "_.template('<div id=\"foo\"><%= bar %></div>');");
+          done();
+        });
+      });
+  });
+
+  it('test prefix-pathSplit-extension-foo.js', (done) => {
+    gulp.src(`${srcPath}/prefix-pathSplit-extension-foo.js`)
+      .pipe(replaceTemplate({
+        templateDirPath: 'examples/simple/src/pug/templates',
+        prefix: 'ptu-',
+        pathSplit: '/',
+        extension: true,
+      }))
+      .pipe(gulp.dest(destPath))
+      .on('end', () => {
+        fs.readFile(`${destPath}/prefix-pathSplit-extension-foo.js`, (err, data) => {
           if (err) throw err;
           assert.equal(data.toString(), "_.template('<div id=\"foo\"><%= bar %></div>');");
           done();

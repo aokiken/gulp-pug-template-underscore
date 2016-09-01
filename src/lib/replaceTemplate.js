@@ -4,7 +4,7 @@ import matchList from './matchList';
 
 export default (config) =>
   through.obj((file, encoding, callback) => {
-    Promise.all([templateList(config.templateDirPath)]).then((values) => {
+    Promise.all([templateList(config.templateDirPath, config.pathSplit)]).then((values) => {
       const list = values[0];
       const _matchList = matchList(String(file.contents), config.prefix, config.extension);
       let result = String(file.contents);

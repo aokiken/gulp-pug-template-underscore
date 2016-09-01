@@ -1,0 +1,1 @@
+_.template('nest/foo');
