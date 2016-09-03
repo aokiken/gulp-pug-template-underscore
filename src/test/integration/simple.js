@@ -1,12 +1,12 @@
-import { assert, gulp, fs, replaceTemplate } from './../helper';
+import { assert, gulp, fs, ptu } from './../helper';
 
 const srcPath = 'examples/simple/src/javascripts';
 const destPath = 'examples/simple/dest/javascripts';
 
-describe('replaceTemplate', () => {
+describe('gulp-pug-template-underscore', () => {
   it('test foo.js', (done) => {
     gulp.src(`${srcPath}/foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
         pathSplit: '.',
@@ -24,7 +24,7 @@ describe('replaceTemplate', () => {
 
   it('test prefix-foo.js', (done) => {
     gulp.src(`${srcPath}/prefix-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
         pathSplit: '.',
@@ -42,7 +42,7 @@ describe('replaceTemplate', () => {
 
   it('test nest-foo.js', (done) => {
     gulp.src(`${srcPath}/nest-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
         pathSplit: '.',
@@ -60,7 +60,7 @@ describe('replaceTemplate', () => {
 
   it('test extension-foo.js', (done) => {
     gulp.src(`${srcPath}/extension-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
         pathSplit: '.',
@@ -78,7 +78,7 @@ describe('replaceTemplate', () => {
 
   it('test prefix-nest-foo.js', (done) => {
     gulp.src(`${srcPath}/prefix-nest-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
         pathSplit: '.',
@@ -96,7 +96,7 @@ describe('replaceTemplate', () => {
 
   it('test prefix-extension-foo.js', (done) => {
     gulp.src(`${srcPath}/prefix-extension-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
         pathSplit: '.',
@@ -114,7 +114,7 @@ describe('replaceTemplate', () => {
 
   it('test prefix-nest-extension-foo.js', (done) => {
     gulp.src(`${srcPath}/prefix-nest-extension-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
         pathSplit: '.',
@@ -132,7 +132,7 @@ describe('replaceTemplate', () => {
 
   it('test nest-extension-foo.js', (done) => {
     gulp.src(`${srcPath}/nest-extension-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
         pathSplit: '.',
@@ -150,7 +150,7 @@ describe('replaceTemplate', () => {
 
   it('test pathSplit-foo.js', (done) => {
     gulp.src(`${srcPath}/pathSplit-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
         pathSplit: '/',
@@ -168,7 +168,7 @@ describe('replaceTemplate', () => {
 
   it('test pathSplit-extension-foo.js', (done) => {
     gulp.src(`${srcPath}/pathSplit-extension-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: '',
         pathSplit: '/',
@@ -186,7 +186,7 @@ describe('replaceTemplate', () => {
 
   it('test prefix-pathSplit-foo.js', (done) => {
     gulp.src(`${srcPath}/prefix-pathSplit-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
         pathSplit: '/',
@@ -204,7 +204,7 @@ describe('replaceTemplate', () => {
 
   it('test prefix-pathSplit-extension-foo.js', (done) => {
     gulp.src(`${srcPath}/prefix-pathSplit-extension-foo.js`)
-      .pipe(replaceTemplate({
+      .pipe(ptu({
         templateDirPath: 'examples/simple/src/pug/templates',
         prefix: 'ptu-',
         pathSplit: '/',
