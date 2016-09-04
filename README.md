@@ -5,22 +5,30 @@ gulp-pug-template-underscore
 
 ## Overview
 
-指定のディレクトリ配下にあるpugファイルをcompileして、指定のjsファイル内の `/_.template\('.*?'\)/g` に該当する要素の場合、replaceする。
+指定のディレクトリ配下にあるpugファイルをcompileして、指定のjsファイル内の `/.template\('.*?'\)/g` に該当する要素の場合、replaceする。
 
 このことにより、htmlファイル内に `<script type="text/template"></script>` のような記述がなくなり、htmlファイルの見通しがよくなること、かつpugファイルの再利用性や、共通性を高められるのでは、という狙い。
+
+## Sample Project
+* [aokiken/todomvc_backbone](https://github.com/aokiken/todomvc_backbone)
+* [aokiken/bookmarker_backbone](https://github.com/aokiken/bookmarker_backbone)
 
 ## Sample gulpfile.js
 ```js
 var gulp = require('gulp');
 var ptu = require('gulp-pug-template-underscore');
 
-var templateDirPath = 'src/pug/templates';
 var srcPath = 'src/javascripts/**/*.js';
 var destPath = 'dest/javascripts';
 
 gulp.task('default',function(){
   gulp.src(srcPath)
-  .pipe(ptu({templateDirPath: templateDirPath}))
+  .pipe(ptu({
+    templateDirPath: 'src/pug/templates',
+    prefix: '',
+    pathSplit: '.',
+    extension: false,
+  }))
   .pipe(gulp.dest(destPath));
 });
 ```
@@ -56,13 +64,82 @@ _.template('<li><%= title %></li>')
 _.template('ptu-foo') // replace with compiled foo.pug 
 ```
 
+### options.pathSplit
+```js
+var gulp = require('gulp');
+var ptu = require('gulp-pug-template-underscore');
 
-## Sample Project
+var templateDirPath = 'src/pug/templates';
+var srcPath = 'src/javascripts/**/*.js';
+var destPath = 'dest/javascripts';
 
-[aokiken/todomvc_backbone](https://github.com/aokiken/todomvc_backbone)
+gulp.task('default',function(){
+  gulp.src(srcPath)
+  .pipe(ptu({
+    templateDirPath: templateDirPath,
+    pathSplit: '/',
+  }))
+  .pipe(gulp.dest(destPath));
+});
+```
 
-[Backbone.js • TodoMVC](https://aokiken.github.io/todomvc_backbone/)
+#### sample.js
 
-[aokiken/bookmarker_backbone](https://github.com/aokiken/bookmarker_backbone)
+```js
+// replace target
+_.template('nest/foo') // replace with compiled nest/foo.pug 
+```
 
-[bookmarker_backbone](https://aokiken.github.io/bookmarker_backbone/)
+### options.extension
+```js
+var gulp = require('gulp');
+var ptu = require('gulp-pug-template-underscore');
+
+var templateDirPath = 'src/pug/templates';
+var srcPath = 'src/javascripts/**/*.js';
+var destPath = 'dest/javascripts';
+
+gulp.task('default',function(){
+  gulp.src(srcPath)
+  .pipe(ptu({
+    templateDirPath: templateDirPath,
+    extension: true,
+  }))
+  .pipe(gulp.dest(destPath));
+});
+```
+
+#### sample.js
+
+```js
+// replace target
+_.template('foo.pug') // replace with compiled nest/foo.pug 
+```
+
+### options example
+```js
+var gulp = require('gulp');
+var ptu = require('gulp-pug-template-underscore');
+
+var templateDirPath = 'src/pug/templates';
+var srcPath = 'src/javascripts/**/*.js';
+var destPath = 'dest/javascripts';
+
+gulp.task('default',function(){
+  gulp.src(srcPath)
+  .pipe(ptu({
+    templateDirPath: 'src/pug/templates',
+    prefix: '',
+    pathSplit: '/',
+    extension: true,
+  }))
+  .pipe(gulp.dest(destPath));
+});
+```
+
+#### sample.js
+
+```js
+// replace target
+_.template('nest/foo.pug') // replace with compiled nest/foo.pug 
+```
