@@ -11,10 +11,10 @@ export default (config) =>
       if (_matchList) {
         _matchList.forEach((matchItem) => {
           const ext = config.extension ? '.pug' : '';
-          const matchItemReg = new RegExp(`_.template\\('${config.prefix}|${ext}'\\)`, 'g');
+          const matchItemReg = new RegExp(`.template\\('${config.prefix}|${ext}'\\)`, 'g');
           const key = matchItem.replace(matchItemReg, '');
-          const val = `_.template('${list[key]}')`;
-          const resultReg = new RegExp(`_.template\\('${config.prefix}${key}.*?${ext}'\\)`, 'g');
+          const val = `.template('${list[key]}')`;
+          const resultReg = new RegExp(`.template\\('${config.prefix}${key}.*?${ext}'\\)`, 'g');
           result = result.replace(resultReg, val);
         });
       }
