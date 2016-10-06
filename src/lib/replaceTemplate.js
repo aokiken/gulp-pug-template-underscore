@@ -14,7 +14,7 @@ export default (config) =>
           const matchItemReg = new RegExp(`.template\\('${config.prefix}|${ext}'\\)`, 'g');
           const key = matchItem.replace(matchItemReg, '');
           const val = `.template('${list[key]}')`;
-          const resultReg = new RegExp(`.template\\('${config.prefix}${key}.*?${ext}'\\)`, 'g');
+          const resultReg = new RegExp(`.template\\('${config.prefix}${key}${ext}'\\)`, 'g');
           result = result.replace(resultReg, val);
         });
       }
