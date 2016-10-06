@@ -1,6 +1,6 @@
 {
   "name": "gulp-pug-template-underscore",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "no need script#foo(type=text/template)",
   "main": "index.js",
   "scripts": {
