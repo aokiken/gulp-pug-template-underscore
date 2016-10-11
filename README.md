@@ -1,6 +1,8 @@
 gulp-pug-template-underscore
 ===
 
+![logo](https://raw.githubusercontent.com/aokiken/gulp-pug-template-underscore/master/logo.png)
+
 [![Build Status](https://travis-ci.org/aokiken/gulp-pug-template-underscore.svg?branch=master)](https://travis-ci.org/aokiken/gulp-pug-template-underscore)
 
 ## Overview

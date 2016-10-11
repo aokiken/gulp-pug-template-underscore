@@ -1,6 +1,6 @@
 {
   "name": "gulp-pug-template-underscore",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "dependencies": {
     "abbrev": {
       "version": "1.0.9",
